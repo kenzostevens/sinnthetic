@@ -2802,14 +2802,8 @@
       z-index: 9990;
       display: none;
       transform: translateY(100%);
-      animation: slideUpSticky .5s ease forwards 1s;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       gap: 8px
-    }
-
-    @keyframes slideUpSticky {
-      to {
-        transform: translateY(0)
-      }
     }
 
     .mobile-sticky-cta .btn-p {
@@ -2968,6 +2962,18 @@
       box-shadow: 0 0 10px rgba(128, 255, 0, 0.1);
     }
 
+    /* Desktop: show full versions, hide mobile versions */
+    .badge-mobile,
+    .hero-sub-mobile {
+      display: none;
+    }
+
+    @media(max-width:1020px) {
+      .nav-links {
+        display: none
+      }
+    }
+
     @media(max-width:900px) {
       section {
         padding: 80px 24px
@@ -2975,10 +2981,6 @@
 
       nav {
         padding: 14px 24px
-      }
-
-      .nav-links {
-        display: none
       }
 
       .problem-grid {
@@ -3056,23 +3058,159 @@
         backdrop-filter: blur(8px)
       }
 
-      .mobile-sticky-cta {
-        display: flex;
+      /* Center and enlarge logo */
+      nav {
+        justify-content: center;
+      }
+
+      .nav-logo {
+        font-size: 22px;
+      }
+
+      /* Hero layout */
+      .hero {
+        padding: 62px 24px 40px;
+        min-height: auto;
+      }
+
+      /* Flatten hero-content for reorder */
+      .hero-content {
+        display: contents;
+      }
+
+      .hero-h1-wrapper {
+        order: 1;
+        max-width: 860px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-sub {
+        order: 2;
+        max-width: 860px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 6px;
+      }
+
+      .vsl-wrap {
+        order: 3;
+        margin-top: 10px;
+      }
+
+      .hero-actions {
+        order: 4;
+        max-width: 860px;
+        width: 100%;
+        position: relative;
+        z-index: 2;
+        margin-top: 16px;
+      }
+
+      .hero-note {
+        order: 5;
+        font-size: 10px;
+        margin-top: 4px;
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
+
+      .hero-stats {
+        order: 6;
         flex-direction: row;
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px)
+        align-items: flex-start;
+        justify-content: center;
+        gap: 16px;
+        width: 100%;
       }
 
-      .marquee-track {
-        animation-duration: 60s
+      .hero-stat {
+        flex: 1;
       }
 
+      .hero-stat-value {
+        font-size: 24px;
+      }
+
+      .hero-stat-label {
+        font-size: 9px;
+        letter-spacing: 0.8px;
+        line-height: 1.4;
+        margin-top: 2px;
+      }
+
+      /* Badge: shorter text */
+      .badge-full {
+        display: none;
+      }
+
+      .badge-mobile {
+        display: inline;
+      }
+
+      .hero-badge {
+        font-size: 9px;
+        padding: 4px 10px;
+        letter-spacing: 1px;
+        margin-bottom: 14px;
+      }
+
+      /* Show full subtext at smaller size */
+      .hero-sub-full {
+        display: block !important;
+        font-size: 12.5px;
+        line-height: 1.65;
+      }
+
+      .hero-sub-mobile {
+        display: none !important;
+      }
+
+      /* Buttons: 40px height standard */
+      .hero-actions .btn-p {
+        height: 40px;
+        padding: 0 20px;
+        font-size: 13px;
+        border-radius: 10px;
+      }
+
+      .hero-actions .btn-s {
+        height: 40px;
+        padding: 0 20px;
+        font-size: 13px;
+        border-radius: 10px;
+      }
+
+      .btn-p,
+      .btn-s {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Kill heavy VSL shadow */
       .vsl-monitor {
-        box-shadow: 0 10px 40px rgba(0, 0, 0, .6)
+        box-shadow: 0 0 0 1px rgba(191, 95, 255, 0.08);
       }
 
       .vsl-monitor:hover {
-        box-shadow: 0 10px 40px rgba(0, 0, 0, .6)
+        box-shadow: 0 0 0 1px rgba(191, 95, 255, 0.08);
+      }
+
+      /* Slimmer VSL topbar */
+      .vsl-topbar {
+        padding: 6px 12px;
+      }
+
+      .vsl-dot {
+        width: 7px;
+        height: 7px;
+      }
+
+      .vsl-topbar-title {
+        font-size: 8px;
       }
 
       .cursor-glow {
@@ -3128,6 +3266,183 @@
       .unified-bio {
         font-size: 14px;
       }
+
+      /* Sticky CTA */
+      .mobile-sticky-cta {
+        display: flex !important;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 8px 8px calc(8px + env(safe-area-inset-bottom)) 8px;
+        background: #16142E;
+        flex-direction: row;
+        border-top: 1px solid var(--border-l);
+        z-index: 9990;
+        gap: 8px;
+        transform: translateY(100%);
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+
+      .mobile-sticky-cta.revealed {
+        transform: translateY(0);
+      }
+
+      /* ElevenLabs Widget Mobile Hide/Reveal */
+      elevenlabs-convai {
+        opacity: 0;
+        transform: translateY(120px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+      
+      body.mobile-widgets-revealed elevenlabs-convai {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .mobile-sticky-cta .btn-p {
+        flex: 1;
+        height: 40px;
+        padding: 0 10px;
+        font-size: 13px;
+        letter-spacing: -0.2px;
+        width: auto;
+        border-radius: 10px;
+      }
+
+      .mobile-sticky-cta .btn-s {
+        flex: 1.1;
+        height: 40px;
+        padding: 0 8px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        width: auto;
+        border-radius: 10px;
+        background: transparent;
+        color: var(--text);
+      }
+
+      .mobile-sticky-cta .btn-s:hover {
+        animation: none;
+        border-color: rgba(191, 95, 255, 0.8);
+        box-shadow: 0 0 24px rgba(191, 95, 255, 0.2);
+        background: rgba(191, 95, 255, 0.04);
+        transform: translateY(-2px);
+      }
+
+      .mobile-sticky-cta .btn-s:active {
+        animation: none;
+        transform: scale(0.97) translateY(1px);
+        box-shadow: 0 0 24px rgba(191, 95, 255, 0.2);
+        background: rgba(191, 95, 255, 0.08);
+      }
+
+      .mobile-sticky-cta .btn-s svg {
+        width: 16px;
+        height: 16px;
+        margin-right: 6px;
+      }
+
+      .marquee-track {
+        animation-duration: 60s
+      }
+
+      /* Bottom CTA buttons */
+      .cta-actions .btn-p {
+        height: 40px;
+        padding: 0 20px;
+        font-size: 13px !important;
+        border-radius: 10px;
+      }
+
+      .cta-actions .btn-s {
+        height: 40px;
+        padding: 0 20px;
+        font-size: 13px !important;
+        border-radius: 10px;
+      }
+
+      .cta-actions .btn-s svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* Problem section: reorder switch below phone */
+      .problem-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .problem-s-header {
+        order: 1;
+        width: 100%;
+        margin-bottom: 28px;
+      }
+
+      .problem-grid {
+        display: contents;
+      }
+
+      .phone-col {
+        order: 2;
+        width: 100%;
+      }
+
+      .controls {
+        order: 3;
+        margin: 24px 0 28px;
+      }
+
+      .problem-cards {
+        order: 4;
+        width: 100%;
+      }
+
+      /* Onboard section */
+      .onboard-card {
+        padding: 32px 20px;
+      }
+
+      .onboard-card h3 {
+        font-size: 20px;
+      }
+
+      .onboard-card p {
+        font-size: 13px;
+        margin-bottom: 18px;
+      }
+
+      .onboard-card .btn-p {
+        height: 40px;
+        padding: 0 20px;
+        font-size: 13px;
+        border-radius: 10px;
+      }
+
+      /* Pricing section button */
+      .price-card .btn-p {
+        height: 40px;
+        padding: 0 20px;
+        font-size: 13px;
+        border-radius: 10px;
+      }
+
+      /* Connect section buttons */
+      .connect-box .btn-s.full-w {
+        height: 40px;
+        padding: 0 20px;
+        font-size: 13px;
+        border-radius: 10px;
+      }
+
+      .connect-box .btn-s.full-w svg {
+        width: 14px;
+        height: 14px;
+      }
     }
 
     @media(max-width:480px) {
@@ -3136,11 +3451,33 @@
       }
 
       .hero {
-        padding: 100px 16px 40px
+        padding: 62px 16px 40px;
+      }
+
+      /* Tighter badge on small phones */
+      .hero-badge {
+        font-size: 8px;
+        padding: 3px 9px;
+        letter-spacing: 0.8px;
+        margin-bottom: 12px;
       }
 
       .hero-h1-main {
         font-size: 34px
+      }
+
+      /* Smaller subtext on phones */
+      .hero-sub-full {
+        font-size: 12px;
+      }
+
+      .hero-stat-value {
+        font-size: 22px;
+      }
+
+      .hero-stat-label {
+        font-size: 8.5px;
+        letter-spacing: 0.5px;
       }
 
       .price-val {
@@ -3149,17 +3486,6 @@
 
       .price-card {
         padding: 28px 20px
-      }
-
-      .hero-stats {
-        flex-direction: column;
-        gap: 24px
-      }
-
-      .btn-p,
-      .btn-s {
-        width: 100%;
-        justify-content: center
       }
 
       .guar-inner h2 {
@@ -3190,6 +3516,12 @@
         stroke-linejoin="round">
         <rect x="6" y="4" width="4" height="16"></rect>
         <rect x="14" y="4" width="4" height="16"></rect>
+      </symbol>
+      <symbol id="ic-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path
+          d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+        </path>
       </symbol>
     </defs>
   </svg>
@@ -3230,15 +3562,18 @@
 
         <!-- SEO Optimized H1 Header (Visually identical to original) -->
         <h1 class="hero-h1-wrapper">
-          <span class="hero-badge ifc"><span class="pulse-dot"></span> AI Receptionist for Plumbers · HVAC ·
-            Electricians</span>
+          <span class="hero-badge ifc"><span class="pulse-dot"></span> <span class="badge-full">AI Receptionist for
+              Plumbers · HVAC · Electricians</span><span class="badge-mobile">For Plumbers · HVAC ·
+              Electricians</span></span>
           <span class="hero-h1-main">Never lose a job to <span class="hi split-wrap"><span
                 class="split-top">voicemail</span><span class="split-bottom">voicemail</span></span> again.</span>
         </h1>
 
-        <p class="hero-sub">We answer your calls 24/7 and book jobs straight to your calendar automatically — so you
+        <p class="hero-sub hero-sub-full">We answer your calls 24/7 and book jobs straight to your calendar automatically — so you
           stop losing leads while you're on the job. Up and running in under 48 hours with a 14-day free trial. Keep it
           only if it's clearly paying for itself.</p>
+        <p class="hero-sub hero-sub-mobile">We answer your calls 24/7 and book jobs to your calendar. Live in 48 hours.
+          14-day free trial.</p>
         <div class="hero-actions fc">
           <button class="btn-p ifc" data-cal-link="kenzostevens/setup-call" data-cal-namespace="setup-call"
             data-cal-config='{"layout":"month_view","theme":"dark"}'
@@ -3602,13 +3937,13 @@
               <div class="connect-box-title mono">OPTION A: CALL FROM YOUR PHONE</div>
               <p class="connect-box-desc">Dial the demo line directly. Put it on speakerphone while you browse the site.
               </p>
-              <a href="tel:+18888878576" class="btn-s ifc full-w" aria-label="Call Demo Line">📞 Call (888) 887-8576</a>
+              <a href="tel:+18888878576" class="btn-s ifc full-w" aria-label="Call Demo Line"><svg aria-hidden="true" viewBox="0 0 24 24"><use href="#ic-phone"></use></svg> Call (888) 887-8576</a>
             </div>
             <div class="connect-box">
               <div class="connect-box-title mono">OPTION B: USE THE VOICE WIDGET</div>
               <p class="connect-box-desc">No phone needed. Talk directly through your computer or mobile browser.</p>
               <button class="btn-s ifc full-w" onclick="window.startElevenLabsCall(this)"
-                aria-label="Talk To The AI Now">
+                aria-label="Talk To The AI Now" id="optionBBtn">
                 Talk To The AI Now
                 <svg aria-hidden="true" viewBox="0 0 24 24">
                   <use href="#ic-mic"></use>
@@ -3828,7 +4163,7 @@
                   </path>
                 </svg>
               </a>
-              <a href="mailto:kenzo@sinnthetic.com" class="dossier-link" aria-label="Email">
+              <a href="/cdn-cgi/l/email-protection#244f414a5e4b64574d4a4a504c41504d470a474b49" class="dossier-link" aria-label="Email">
                 <svg viewBox="0 0 24 24">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
@@ -4006,10 +4341,15 @@
   <div class="mobile-sticky-cta">
     <button class="btn-p ifc" data-cal-link="kenzostevens/setup-call" data-cal-namespace="setup-call"
       data-cal-config='{"layout":"month_view","theme":"dark"}' aria-label="Book Setup Call">Book Setup Call</button>
-    <a href="tel:+18888878576" class="btn-s ifc">📞 AI: (888) 887-8576</a>
+    <a href="tel:+18888878576" class="btn-s ifc">
+      <svg aria-hidden="true" viewBox="0 0 24 24">
+        <use href="#ic-phone"></use>
+      </svg>
+      AI: (888) 887-8576
+    </a>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     (function () {
       const d = document, id = i => d.getElementById(i), qa = s => d.querySelectorAll(s);
       let vslAnimationId, ghostSpawnTimer;
@@ -4176,26 +4516,49 @@
         const originalHtml = btn.innerHTML;
         btn.innerHTML = 'Connecting... ⏳';
 
-        let attempts = 0;
-        const tryClick = () => {
-          const widget = document.querySelector('elevenlabs-convai');
-          if (widget && widget.shadowRoot) {
-            const shadowBtn = widget.shadowRoot.querySelector('button');
-            if (shadowBtn) {
-              shadowBtn.click();
-              setTimeout(() => btn.innerHTML = originalHtml, 1000);
-              return;
+        // Failsafe: always reset button text after 4s no matter what
+        const failsafe = setTimeout(() => { btn.innerHTML = originalHtml; }, 4000);
+
+        // Force-reveal the widget on mobile so it becomes interactive even before tripwire
+        document.body.classList.add('mobile-widgets-revealed');
+        const mobileStickyCtaEl = document.querySelector('.mobile-sticky-cta');
+        if (mobileStickyCtaEl) mobileStickyCtaEl.classList.add('revealed');
+
+        const activateWidget = () => {
+          let attempts = 0;
+          const tryClick = () => {
+            const widget = document.querySelector('elevenlabs-convai');
+            if (widget && widget.shadowRoot) {
+              const shadowBtn = widget.shadowRoot.querySelector('button');
+              if (shadowBtn) {
+                shadowBtn.click();
+                clearTimeout(failsafe);
+                setTimeout(() => { btn.innerHTML = originalHtml; }, 1000);
+                return;
+              }
             }
-          }
-          attempts++;
-          if (attempts < 20) {
-            setTimeout(tryClick, 100);
-          } else {
-            console.error("ElevenLabs widget button not found in shadow DOM.");
-            btn.innerHTML = originalHtml;
-          }
+            attempts++;
+            if (attempts < 20) {
+              setTimeout(tryClick, 150);
+            } else {
+              console.error("ElevenLabs widget button not found in shadow DOM.");
+              clearTimeout(failsafe);
+              btn.innerHTML = originalHtml;
+            }
+          };
+          tryClick();
         };
-        tryClick();
+
+        // Scroll to Option B if triggered from a different button, then activate after scroll settles
+        const targetBtn = document.getElementById('optionBBtn');
+        if (targetBtn && btn !== targetBtn) {
+          targetBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const delay = window.innerWidth <= 768 ? 1000 : 800;
+          setTimeout(activateWidget, delay);
+        } else {
+          const delay = window.innerWidth <= 768 ? 300 : 0;
+          setTimeout(activateWidget, delay);
+        }
       };
 
       function optimizeElevenLabsWidget() {
@@ -4215,11 +4578,18 @@
                 margin: 0 !important;
                 padding: 0 !important;
               }
+              * {
+                font-family: 'Chakra Petch', sans-serif !important;
+                font-weight: 700 !important;
+              }
               @media (max-width: 768px) {
                 :host > div,
                 div[style*="position: fixed"],
                 div[style*="position: absolute"] {
-                  bottom: 100px !important;
+                  /* 56px (Sticky Bar) + 12px (Float Gap) = 68px + env */
+                  bottom: calc(68px + env(safe-area-inset-bottom)) !important;
+                  right: 8px !important;
+                  left: auto !important;
                 }
               }
             `;
@@ -4333,6 +4703,8 @@
 
       const vslOverlayEl = document.getElementById('vslOverlay');
       const vslMonEl = document.querySelector('.vsl-monitor');
+      const mobileStickyCtaEl = document.querySelector('.mobile-sticky-cta');
+      let hasHitTripwire = false;
 
       if (vslOverlayEl && vslMonEl) {
         window.addEventListener('scroll', () => {
@@ -4340,16 +4712,22 @@
           const rect = vslMonEl.getBoundingClientRect();
           const viewHeight = window.innerHeight;
           const videoCenter = rect.top + (rect.height / 2);
-          if (videoCenter < viewHeight * 0.65 && videoCenter > viewHeight * 0.15) {
+          
+          if (videoCenter < viewHeight * 0.30 && videoCenter > viewHeight * 0.05) {
             vslOverlayEl.classList.add('force-hover');
+
+            // --- TRIPWIRE LOGIC FOR WIDGETS ---
+            if (!hasHitTripwire) {
+              hasHitTripwire = true;
+              if (mobileStickyCtaEl) mobileStickyCtaEl.classList.add('revealed');
+              document.body.classList.add('mobile-widgets-revealed');
+            }
           } else {
             vslOverlayEl.classList.remove('force-hover');
           }
         }, { passive: true });
 
-        vslMonEl.addEventListener('touchmove', () => {
-          if (window.innerWidth <= 768) vslOverlayEl.classList.add('force-hover');
-        }, { passive: true });
+        /* touchmove force-hover removed — scroll handler above handles mobile */
 
         vslOverlayEl.addEventListener('keydown', e => {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.playVSL(); }
@@ -4413,7 +4791,7 @@
   <!-- Cal element-click embed code ends -->
 
   <!-- ElevenLabs Widget -->
-  <elevenlabs-convai agent-id="agent_2801kk75xvdnf1sbf1ph2pfydjwv"></elevenlabs-convai>
+  <elevenlabs-convai agent-id="agent_5501kmjvvsqxfdm88n42rb1mmfnt"></elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
 
 </body>
