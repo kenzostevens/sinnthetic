@@ -5,6 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- OLD DEVICE REDIRECT — must be first script, before any CSS/fonts/heavy JS -->
+  <script>
+  (function() {
+    var isOldBrowser = false;
+    try {
+      isOldBrowser = !CSS.supports('aspect-ratio', '1/1');
+    } catch(e) {
+      isOldBrowser = true;
+    }
+    if (!isOldBrowser) {
+      var ua = navigator.userAgent;
+      var iOSMatch = ua.match(/OS (\d+)_/);
+      if (iOSMatch && parseInt(iOSMatch[1]) < 15) {
+        isOldBrowser = true;
+      }
+    }
+    if (isOldBrowser) {
+      window.location.replace('lite.html' + window.location.search + window.location.hash);
+    }
+  })();
+  </script>
+
   <!-- SEO & Meta Tags -->
   <title>Sinnthetic | 24/7 AI Receptionist for Plumbers, HVAC & Electricians</title>
   <meta name="description"
@@ -3676,7 +3698,7 @@
             </div>
 
             <!-- Video SEO Added: fallback text + poster image -->
-            <video id="vslVideo" src="sinnthetic.mp4" playsinline controls preload="metadata" poster="icon.png"
+            <video id="vslVideo" src="sinnthetic.mp4" playsinline controls preload="metadata"
               aria-label="Demo of Sinnthetic AI Receptionist booking a job">
               <p>Your browser does not support HTML video. Here is a demo of the Sinnthetic AI Receptionist.</p>
             </video>
@@ -4222,7 +4244,7 @@
                   </path>
                 </svg>
               </a>
-              <a href="/cdn-cgi/l/email-protection#244f414a5e4b64574d4a4a504c41504d470a474b49" class="dossier-link" aria-label="Email">
+              <a href="mailto:kenzo@sinnthetic.com" class="dossier-link" aria-label="Email">
                 <svg viewBox="0 0 24 24">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
@@ -4408,7 +4430,7 @@
     </a>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     (function () {
       const d = document, id = i => d.getElementById(i), qa = s => d.querySelectorAll(s);
       let vslAnimationId, ghostSpawnTimer;
