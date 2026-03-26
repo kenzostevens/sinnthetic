@@ -158,7 +158,6 @@
       content: '';
       position: fixed;
       top: 0; right: 0; bottom: 0; left: 0;
-      top: 0; right: 0; bottom: 0; left: 0;
       inset: 0;
       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAQAAAAAYLlVAAAAPElEQVR42u3OMQEAAAwCoPk3t40uBkEqSEk/yJgAAQIECBAgQIAAAQIECBAgQIAAAQIECBAgQIAAAQIErjw8u18Yt1s1XAAAAABJRU5ErkJggg==");
       background-repeat: repeat;
@@ -180,7 +179,6 @@
 
     .loader {
       position: fixed;
-      top: 0; right: 0; bottom: 0; left: 0;
       top: 0; right: 0; bottom: 0; left: 0;
       inset: 0;
       background: var(--bg);
@@ -4649,7 +4647,8 @@
             const style = document.createElement('style');
             style.id = 'sinn-clean-override';
             style.innerHTML = `
-              .sinn-hide-branding {
+              div:has(> a[href*="elevenlabs"]),
+              p:has(> a[href*="elevenlabs"]) {
                 display: none !important;
                 opacity: 0 !important;
                 height: 0 !important;
@@ -4675,11 +4674,6 @@
               }
             `;
             widget.shadowRoot.appendChild(style);
-            // JS fallback for :has() — hide ElevenLabs branding links
-            widget.shadowRoot.querySelectorAll('a[href*="elevenlabs"]').forEach(function(a) {
-              var parent = a.parentElement;
-              if (parent) parent.classList.add('sinn-hide-branding');
-            });
           }
           if (widget.shadowRoot.querySelector('button')) { return true; }
         }
