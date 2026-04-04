@@ -2812,33 +2812,37 @@
     .footer-logo {
       font-size: 15px;
       font-weight: 700;
-      color: var(--text)
+      color: var(--text);
+      flex: 1;
+      text-align: left;
     }
 
     .footer-logo span {
       color: var(--green)
     }
 
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none
-    }
-
-    .footer-links a {
-      font-size: 12px;
-      color: var(--text3);
-      text-decoration: none;
-      transition: color .2s
-    }
-
-    .footer-links a:hover {
-      color: var(--text2)
-    }
-
     .footer-copy {
       font-size: 11px;
-      color: var(--text3)
+      color: var(--text3);
+      flex: 1;
+      text-align: center;
+    }
+
+    .footer-grant {
+      flex: 1;
+      text-align: right;
+    }
+
+    .footer-grant img {
+      width: 140px;
+      opacity: 0.65;
+      transition: opacity 0.3s ease;
+      vertical-align: middle;
+    }
+
+    .footer-grant a:hover img,
+    .footer-grant a:focus-visible img {
+      opacity: 1;
     }
 
     .mobile-sticky-cta {
@@ -3082,7 +3086,13 @@
 
       .footer-inner {
         flex-direction: column;
-        gap: 16px
+        gap: 20px
+      }
+      .footer-logo,
+      .footer-copy,
+      .footer-grant {
+        flex: none;
+        text-align: center;
       }
 
       .guar-points {
@@ -4242,7 +4252,7 @@
                   </path>
                 </svg>
               </a>
-              <a href="mailto:kenzo@sinnthetic.com" class="dossier-link" aria-label="Email">
+              <a href="/cdn-cgi/l/email-protection#88e3ede6f2e7c8fbe1e6e6fce0edfce1eba6ebe7e5" class="dossier-link" aria-label="Email">
                 <svg viewBox="0 0 24 24">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
@@ -4414,6 +4424,11 @@
     <div class="footer-inner">
       <div class="footer-logo">SINN<span>THETIC</span></div>
       <div class="footer-copy">© 2026 Sinnthetic. All rights reserved.</div>
+      <div class="footer-grant">
+        <a href="https://elevenlabs.io/startup-grants" target="_blank" rel="noopener noreferrer" aria-label="ElevenLabs Startup Grants">
+          <img src="https://eleven-public-cdn.elevenlabs.io/payloadcms/cy7rxce8uki-IIElevenLabsGrants%201.webp" alt="Backed by ElevenLabs">
+        </a>
+      </div>
     </div>
   </footer>
 
@@ -4428,7 +4443,7 @@
     </a>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     (function () {
       const d = document, id = i => d.getElementById(i), qa = s => d.querySelectorAll(s);
       let vslAnimationId, ghostSpawnTimer;
