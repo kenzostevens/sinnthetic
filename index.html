@@ -3374,13 +3374,16 @@
       /* ElevenLabs Widget Mobile Hide/Reveal */
       elevenlabs-convai {
         opacity: 0;
-        transform: translateY(120px);
-        transition: opacity 0.5s ease, transform 0.5s ease;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.35s ease, visibility 0s linear 0.35s;
       }
       
       body.mobile-widgets-revealed elevenlabs-convai {
         opacity: 1;
-        transform: translateY(0);
+        visibility: visible;
+        pointer-events: auto;
+        transition: opacity 0.35s ease;
       }
 
       .mobile-sticky-cta .btn-p {
