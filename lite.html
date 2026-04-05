@@ -14,6 +14,10 @@
   <meta property="og:url" content="https://sinnthetic.com">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sinnthetic | 24/7 AI Receptionist">
+  <meta name="twitter:description" content="Never lose a job to voicemail again. We answer your calls 24/7 and auto-book jobs to your calendar. Up and running in 48 hours.">
+  <meta name="twitter:image" content="https://sinnthetic.com/og-image.jpg">
+  <meta name="twitter:url" content="https://sinnthetic.com/">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Sinnthetic AI","operatingSystem":"Web","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"359.00","priceCurrency":"USD"},"description":"24/7 AI Receptionist built specifically for plumbing, HVAC, and electrical contractors."}</script>
   <style>
     *, *::before, *::after {
@@ -50,6 +54,15 @@
       background: var(--bg);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
+    }
+
+    .vsl-play-overlay:focus-visible {
+      outline-offset: -4px;
     }
 
     /* Fallback system monospace font stack */
@@ -491,7 +504,7 @@
   </div>
 
   <nav id="nav">
-    <a href="#" class="nav-logo">SINN<span>THETIC</span></a>
+    <a href="#hero" class="nav-logo" aria-label="Sinnthetic Home">SINN<span>THETIC</span></a>
     <ul class="nav-links">
       <li><a href="#problem">The Problem</a></li>
       <li><a href="#how">How It Works</a></li>
@@ -500,7 +513,7 @@
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#founder">The Builder</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="https://cal.com/kenzostevens/setup-call" target="_blank" class="nav-cta">Book Setup Call</a></li>
+      <li><a href="https://cal.com/kenzostevens/setup-call" target="_blank" rel="noopener noreferrer" class="nav-cta" aria-label="Book Setup Call">Book Setup Call</a></li>
     </ul>
   </nav>
 
@@ -519,8 +532,8 @@
 
       <div class="hero-actions-wrap">
         <div class="hero-actions fc">
-          <a href="https://cal.com/kenzostevens/setup-call" target="_blank" class="btn-p ifc">Book Setup Call &amp; Start 14-Day Trial</a>
-          <a href="tel:+18888878576" class="btn-s ifc"><svg viewBox="0 0 24 24"><use href="#ic-phone"></use></svg> Talk To The AI Now</a>
+          <a href="https://cal.com/kenzostevens/setup-call" target="_blank" rel="noopener noreferrer" class="btn-p ifc" aria-label="Book Setup Call and Start 14-Day Trial">Book Setup Call &amp; Start 14-Day Trial</a>
+          <a href="tel:+18888878576" class="btn-s ifc" aria-label="Call the AI demo line now"><svg viewBox="0 0 24 24"><use href="#ic-phone"></use></svg> Talk To The AI Now</a>
         </div>
         <div class="hero-note">30-minute setup call · Live in 48 hours · Keep it only if it pays for itself.</div>
       </div>
@@ -532,11 +545,11 @@
             <div class="vsl-topbar-title">sinnthetic.com</div>
           </div>
           <div class="vsl-screen">
-            <div class="vsl-play-overlay" id="vslOverlay" onclick="playVSL()">
+            <div class="vsl-play-overlay" id="vslOverlay" onclick="playVSL()" role="button" tabindex="0" aria-label="Play Demo Video">
               <div class="play-ring"><div class="pi"></div></div>
               <div class="play-label">PRESS PLAY BEFORE YOU SCROLL</div>
             </div>
-            <video id="vslVideo" src="sinnthetic.mp4" playsinline controls preload="metadata"><p>Your browser does not support HTML video.</p></video>
+            <video id="vslVideo" src="sinnthetic.mp4" poster="og-image.jpg" playsinline controls preload="metadata" aria-label="Demo of Sinnthetic AI Receptionist booking a job"><p>Your browser does not support HTML video.</p></video>
           </div>
         </div>
       </div>
@@ -576,7 +589,7 @@
         <div class="controls reveal">
           <div class="switch-wrap">
             <span class="switch-text active-red" id="textOff">No Coverage</span>
-            <div class="switch" id="systemToggle"></div>
+            <div class="switch" id="systemToggle" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle phone system comparison"></div>
             <span class="switch-text" id="textOn">Sinnthetic AI</span>
           </div>
         </div>
@@ -713,7 +726,7 @@
         <div class="test-drive-card reveal">
           <div class="split-left">
             <div class="col-title">⚙️ How to connect</div><p class="connect-sub">Take the AI for a live test drive right now. You don't have to talk to a human.</p>
-            <div class="connect-box"><div class="connect-box-title">CALL FROM YOUR PHONE</div><p class="connect-box-desc">Dial the demo line directly. Put it on speakerphone while you browse the site.</p><a href="tel:+18888878576" class="btn-s ifc full-w"><svg viewBox="0 0 24 24"><use href="#ic-phone"></use></svg> Call (888) 887-8576</a></div>
+            <div class="connect-box"><div class="connect-box-title">CALL FROM YOUR PHONE</div><p class="connect-box-desc">Dial the demo line directly. Put it on speakerphone while you browse the site.</p><a href="tel:+18888878576" class="btn-s ifc full-w" aria-label="Call the AI demo line at 888 887 8576"><svg viewBox="0 0 24 24"><use href="#ic-phone"></use></svg> Call (888) 887-8576</a></div>
           </div>
           <div class="split-right">
             <div class="col-title">💬 What to say</div><p class="connect-sub">The AI wears two hats. It books jobs, but it also answers questions about Sinnthetic. Test both:</p>
@@ -738,14 +751,14 @@
       <div class="pricing-section">
         <div class="pricing-header reveal"><div class="s-label">Simple Pricing</div><h2 class="s-title">One plan. No surprises.</h2><div class="s-desc">Try it free for 14 days. After that, it costs less than lunch for your crew.</div></div>
         <div class="pricing-toggle-wrap reveal">
-          <div class="pricing-toggle fc"><span class="ptl active" id="monthlyLabel">Monthly</span><div class="pt-switch" id="pricingToggle" role="switch" aria-checked="false" tabindex="0"></div><span class="ptl" id="annualLabel">Annual</span></div>
+          <div class="pricing-toggle fc"><span class="ptl active" id="monthlyLabel">Monthly</span><div class="pt-switch" id="pricingToggle" role="switch" aria-checked="false" tabindex="0" aria-label="Toggle annual pricing"></div><span class="ptl" id="annualLabel">Annual</span></div>
           <div class="pt-badge" id="saveBadge">Save $720/yr</div>
         </div>
         <div class="pricing-grid">
           <div class="price-card feat reveal">
             <div class="price-card-label">Sinnthetic — Full Service</div><div class="price-amount"><span class="price-dollar">$</span><span class="price-val" id="priceValue">359</span><span class="price-per">/month</span></div><div class="price-desc" id="priceDesc">14 days free — then $359/month. Cancel anytime.</div>
             <ul class="price-features"><li><span class="ck">✓</span> 24/7 AI receptionist — answers when you can't</li><li><span class="ck">✓</span> You stay in control — handle calls your way</li><li><span class="ck">✓</span> Direct Google Calendar booking</li><li><span class="ck">✓</span> Email summaries after every call</li><li><span class="ck">✓</span> Trained on your exact services, hours, service area</li><li><span class="ck">✓</span> Unlimited call volume — flat rate regardless</li><li><span class="ck">✓</span> Updates within 24hrs — no extra cost</li><li><span class="ck">✓</span> No contract · Cancel anytime · No penalties</li><li><span class="ck">✓</span> We build everything — zero setup on your end</li></ul>
-            <a href="https://cal.com/kenzostevens/setup-call" target="_blank" class="btn-p ifc">Book Setup Call &amp; Start 14-Day Trial</a>
+            <a href="https://cal.com/kenzostevens/setup-call" target="_blank" rel="noopener noreferrer" class="btn-p ifc" aria-label="Book Setup Call and Start 14-Day Trial">Book Setup Call &amp; Start 14-Day Trial</a>
           </div>
           <div class="price-card reveal">
             <div class="price-card-label">Human Receptionist (the alternative)</div><div class="price-amount"><span class="price-dollar">$</span><span class="price-val" style="color:var(--red)">3,000</span><span class="price-per">/month</span></div><div class="price-desc" style="color:var(--red)">No trial. Plus hiring, onboarding, and turnover costs.</div>
@@ -776,7 +789,7 @@
       <div class="unified-wrapper">
         <div class="s-label reveal">Who You'll Work With</div>
         <div class="unified-card reveal">
-          <img src="founder.webp" alt="Kenzo Stevens" class="unified-photo" onerror="this.src='https://via.placeholder.com/220/242048/80FF00?text=K'">
+          <img src="founder.webp" alt="Kenzo Stevens" class="unified-photo" loading="lazy" decoding="async" width="880" height="880" onerror="this.src='https://via.placeholder.com/220/242048/80FF00?text=K'">
           <div class="founder-info">
             <h3 class="dossier-name">Kenzo Stevens</h3><div class="dossier-role">Founder · Sinnthetic</div>
             <p class="unified-bio">I built Sinnthetic after watching contractors lose thousands to voicemail every month with no realistic fix at their size. Every system is built personally by me. I'm the person you'll talk to on the setup call, the person who builds your AI receptionist, and the person who picks up when you need something fixed. There's no team you get handed off to. It's me the whole way through. If something breaks, you text me and I fix it.</p>
@@ -784,7 +797,7 @@
               <a href="https://www.facebook.com/kenzostevens/" target="_blank" rel="noopener noreferrer" class="dossier-link" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3.61l.39-4H14V7a1 1 0 0 1 1-1h3z"></path></svg></a>
               <a href="https://www.instagram.com/kenzostevens/" target="_blank" rel="noopener noreferrer" class="dossier-link" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
               <a href="https://wa.me/97337900244" target="_blank" rel="noopener noreferrer" class="dossier-link" aria-label="WhatsApp"><svg class="wa-icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"></path></svg></a>
-              <a href="mailto:kenzo@sinnthetic.com" class="dossier-link" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
+              <a href="mailto:kenzo@sinnthetic.com" class="dossier-link" aria-label="Email Kenzo"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></a>
             </div>
           </div>
         </div>
@@ -798,7 +811,7 @@
           <div class="onboard-badge ifc"><span class="pulse-dot"></span> Accepting new clients</div>
           <h3>Be one of the first to try it.</h3>
           <p>We're actively onboarding plumbing, HVAC, and electrical contractors. Every system is built personally by Kenzo. Limited spots to ensure quality during early rollout.</p>
-          <a href="https://cal.com/kenzostevens/setup-call" target="_blank" class="btn-p ifc">Book Setup Call &amp; Start 14-Day Trial</a>
+          <a href="https://cal.com/kenzostevens/setup-call" target="_blank" rel="noopener noreferrer" class="btn-p ifc" aria-label="Book Setup Call and Start 14-Day Trial">Book Setup Call &amp; Start 14-Day Trial</a>
         </div>
       </div>
     </section>
@@ -826,8 +839,8 @@
         <h2>Stop bleeding revenue<br>to <span>voicemail</span>.</h2>
         <p>48 hours from now, every call to your business gets answered — whether you're on a job, with a customer, or at your kid's game. Book a quick setup call and see exactly what you've been missing.</p>
         <div class="cta-actions fc">
-          <a href="https://cal.com/kenzostevens/setup-call" target="_blank" class="btn-p ifc" style="font-size:16px">Book Setup Call &amp; Start 14-Day Trial</a>
-          <a href="tel:+18888878576" class="btn-s ifc" style="font-size:16px"><svg viewBox="0 0 24 24" width="18" height="18"><use href="#ic-phone"></use></svg> Talk To The AI Now</a>
+          <a href="https://cal.com/kenzostevens/setup-call" target="_blank" rel="noopener noreferrer" class="btn-p ifc" style="font-size:16px" aria-label="Book Setup Call and Start 14-Day Trial">Book Setup Call &amp; Start 14-Day Trial</a>
+          <a href="tel:+18888878576" class="btn-s ifc" style="font-size:16px" aria-label="Call the AI demo line now"><svg viewBox="0 0 24 24" width="18" height="18"><use href="#ic-phone"></use></svg> Talk To The AI Now</a>
         </div>
         <div class="cta-note">30-minute setup call · Live in 48 hours · Keep it only if it pays for itself.</div>
       </div>
@@ -840,8 +853,8 @@
   </footer>
 
   <div class="mobile-sticky-cta" id="mobileStickyBar">
-    <a href="https://cal.com/kenzostevens/setup-call" target="_blank" class="btn-p ifc">Book Setup Call</a>
-    <a href="tel:+18888878576" class="btn-s ifc"><svg viewBox="0 0 24 24"><use href="#ic-phone"></use></svg> AI: (888) 887-8576</a>
+    <a href="https://cal.com/kenzostevens/setup-call" target="_blank" rel="noopener noreferrer" class="btn-p ifc" aria-label="Book Setup Call">Book Setup Call</a>
+    <a href="tel:+18888878576" class="btn-s ifc" aria-label="Call the AI demo line at 888 887 8576"><svg viewBox="0 0 24 24"><use href="#ic-phone"></use></svg> AI: (888) 887-8576</a>
   </div>
 
   <script>
@@ -887,6 +900,16 @@
         if(v) v.play().catch(function(){});
       };
 
+      var vslOverlay = d.getElementById('vslOverlay');
+      if(vslOverlay){
+        vslOverlay.addEventListener('keydown', function(e){
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            window.playVSL();
+          }
+        });
+      }
+
       // Sticky Mobile Bar
       setTimeout(function(){
         var bar = d.getElementById('mobileStickyBar');
@@ -902,6 +925,7 @@
         
         // Update Switch UI
         if(toggle) toggle.classList.toggle('on', isSinntheticOn);
+        if(toggle) toggle.setAttribute('aria-checked', isSinntheticOn);
         var textOff = d.getElementById('textOff');
         if(textOff) textOff.classList.toggle('active-red', !isSinntheticOn);
         var textOn = d.getElementById('textOn');
@@ -996,23 +1020,71 @@
       if(aLabelClick) aLabelClick.addEventListener('click', function(){ if(!isAnnual) togglePricing(); });
 
       // FAQ Toggle Logic
-      d.querySelectorAll('.faq-item').forEach(function(item){
+      d.querySelectorAll('.faq-item').forEach(function(item, index){
         var q = item.querySelector('.faq-q');
-        if(q){
-          q.addEventListener('click', function(){
+        var a = item.querySelector('.faq-ans');
+        var qId = 'faq-q-' + (index + 1);
+        var aId = 'faq-a-' + (index + 1);
+        if(q && a){
+          q.id = qId;
+          q.setAttribute('role', 'button');
+          q.setAttribute('tabindex', '0');
+          q.setAttribute('aria-controls', aId);
+          q.setAttribute('aria-expanded', 'false');
+          a.id = aId;
+          a.setAttribute('role', 'region');
+          a.setAttribute('aria-labelledby', qId);
+          a.setAttribute('aria-hidden', 'true');
+          var toggleFaq = function(){
             var w = item.classList.contains('open');
-            d.querySelectorAll('.faq-item').forEach(function(i){ i.classList.remove('open'); });
-            if(!w) item.classList.add('open');
+            d.querySelectorAll('.faq-item').forEach(function(i){
+              i.classList.remove('open');
+              var trigger = i.querySelector('.faq-q');
+              var panel = i.querySelector('.faq-ans');
+              if(trigger) trigger.setAttribute('aria-expanded', 'false');
+              if(panel) panel.setAttribute('aria-hidden', 'true');
+            });
+            if(!w){
+              item.classList.add('open');
+              q.setAttribute('aria-expanded', 'true');
+              a.setAttribute('aria-hidden', 'false');
+            }
+          };
+          q.addEventListener('click', toggleFaq);
+          q.addEventListener('keydown', function(e){
+            if(e.key === 'Enter' || e.key === ' '){
+              e.preventDefault();
+              toggleFaq();
+            }
           });
         }
       });
 
       // Anchor Smooth Scroll
+      function scrollToTarget(target){
+        var top = target.getBoundingClientRect().top + (window.pageYOffset || d.documentElement.scrollTop || d.body.scrollTop || 0);
+        try {
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        } catch(err) {
+          window.scrollTo(0, top);
+        }
+      }
+
       d.querySelectorAll('a[href^="#"]').forEach(function(a){
         a.addEventListener('click', function(e){
+          var href = a.getAttribute('href');
+          if(!href || href === '#') return;
+          var targetId = href.slice(1);
+          var t = d.getElementById(targetId);
+          if(!t) return;
           e.preventDefault();
-          var t = d.querySelector(a.getAttribute('href'));
-          if(t) t.scrollIntoView({behavior: 'smooth', block: 'start'});
+          scrollToTarget(t);
+          try {
+            if(window.history && window.history.pushState) window.history.pushState(null, '', href);
+            else window.location.hash = href;
+          } catch(err) {
+            window.location.hash = href;
+          }
         });
       });
     })();
