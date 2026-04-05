@@ -795,16 +795,6 @@
       z-index: 10
     }
 
-    .mobile-widget-tripwire {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      width: 1px;
-      height: 1px;
-      opacity: 0;
-      pointer-events: none
-    }
-
     .vsl-monitor {
       position: relative;
       border-radius: 14px;
@@ -3374,16 +3364,13 @@
       /* ElevenLabs Widget Mobile Hide/Reveal */
       elevenlabs-convai {
         opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+        transform: translateY(120px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
       }
       
       body.mobile-widgets-revealed elevenlabs-convai {
         opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transition: opacity 0.35s ease;
+        transform: translateY(0);
       }
 
       .mobile-sticky-cta .btn-p {
@@ -3731,7 +3718,6 @@
             </video>
           </div>
         </div>
-        <div class="mobile-widget-tripwire" id="mobileWidgetTripwire" aria-hidden="true"></div>
       </div>
 
       <div class="hero-stats fc">
@@ -4685,8 +4671,10 @@
         // Failsafe: always reset button text after 4s no matter what
         const failsafe = setTimeout(() => { btn.innerHTML = originalHtml; }, 4000);
 
-        // Force-reveal the mobile controls on intent, even without scrolling.
-        revealMobileWidgets();
+        // Force-reveal the widget on mobile so it becomes interactive even before tripwire
+        document.body.classList.add('mobile-widgets-revealed');
+        const mobileStickyCtaEl = document.querySelector('.mobile-sticky-cta');
+        if (mobileStickyCtaEl) mobileStickyCtaEl.classList.add('revealed');
 
         const activateWidget = () => {
           let attempts = 0;
@@ -4902,51 +4890,7 @@
       const vslOverlayEl = document.getElementById('vslOverlay');
       const vslMonEl = document.querySelector('.vsl-monitor');
       const mobileStickyCtaEl = document.querySelector('.mobile-sticky-cta');
-      const mobileWidgetTripwireEl = document.getElementById('mobileWidgetTripwire');
-      let mobileWidgetsUnlocked = false;
-      let mobileWidgetObserver = null;
-
-      function stopMobileWidgetWatchers() {
-        if (mobileWidgetObserver) {
-          mobileWidgetObserver.disconnect();
-          mobileWidgetObserver = null;
-        }
-        window.removeEventListener('scroll', checkMobileWidgetTripwire);
-        window.removeEventListener('resize', checkMobileWidgetTripwire);
-      }
-
-      function revealMobileWidgets() {
-        if (mobileWidgetsUnlocked) return;
-        mobileWidgetsUnlocked = true;
-        if (mobileStickyCtaEl) mobileStickyCtaEl.classList.add('revealed');
-        document.body.classList.add('mobile-widgets-revealed');
-        stopMobileWidgetWatchers();
-      }
-
-      function checkMobileWidgetTripwire() {
-        if (mobileWidgetsUnlocked || window.innerWidth > 768 || !mobileWidgetTripwireEl) return;
-        if (mobileWidgetTripwireEl.getBoundingClientRect().top <= window.innerHeight * 0.35) {
-          revealMobileWidgets();
-        }
-      }
-
-      if (mobileWidgetTripwireEl) {
-        if ('IntersectionObserver' in window) {
-          mobileWidgetObserver = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-              if (mobileWidgetsUnlocked || window.innerWidth > 768) return;
-              if (entry.isIntersecting || entry.boundingClientRect.top <= window.innerHeight * 0.35) {
-                revealMobileWidgets();
-              }
-            });
-          }, { rootMargin: "0px 0px -65% 0px", threshold: 0 });
-          mobileWidgetObserver.observe(mobileWidgetTripwireEl);
-        }
-
-        checkMobileWidgetTripwire();
-        window.addEventListener('scroll', checkMobileWidgetTripwire, { passive: true });
-        window.addEventListener('resize', checkMobileWidgetTripwire);
-      }
+      let hasHitTripwire = false;
 
       if (vslOverlayEl && vslMonEl) {
         window.addEventListener('scroll', () => {
@@ -4957,6 +4901,13 @@
           
           if (videoCenter < viewHeight * 0.30 && videoCenter > viewHeight * 0.05) {
             vslOverlayEl.classList.add('force-hover');
+
+            // --- TRIPWIRE LOGIC FOR WIDGETS ---
+            if (!hasHitTripwire) {
+              hasHitTripwire = true;
+              if (mobileStickyCtaEl) mobileStickyCtaEl.classList.add('revealed');
+              document.body.classList.add('mobile-widgets-revealed');
+            }
           } else {
             vslOverlayEl.classList.remove('force-hover');
           }
