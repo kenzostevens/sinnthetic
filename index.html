@@ -3373,17 +3373,11 @@
 
       /* ElevenLabs Widget Mobile Hide/Reveal */
       elevenlabs-convai {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+        display: none;
       }
-      
+
       body.mobile-widgets-revealed elevenlabs-convai {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transition: opacity 0.35s ease;
+        display: block;
       }
 
       .mobile-sticky-cta .btn-p {
@@ -4276,7 +4270,7 @@
                   </path>
                 </svg>
               </a>
-              <a href="mailto:kenzo@sinnthetic.com" class="dossier-link" aria-label="Email Kenzo">
+              <a href="/cdn-cgi/l/email-protection#cea5aba0b4a18ebda7a0a0baa6abbaa7ade0ada1a3" class="dossier-link" aria-label="Email Kenzo">
                 <svg viewBox="0 0 24 24">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                   <polyline points="22,6 12,13 2,6"></polyline>
@@ -4467,7 +4461,7 @@
     </a>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     (function () {
       const d = document, id = i => d.getElementById(i), qa = s => d.querySelectorAll(s);
       let vslAnimationId, ghostSpawnTimer, glowAnimationId = null;
@@ -4750,9 +4744,8 @@
                 :host > div,
                 div[style*="position: fixed"],
                 div[style*="position: absolute"] {
-                  /* 56px (Sticky Bar) + 12px (Float Gap) = 68px + env */
-                  bottom: calc(68px + constant(safe-area-inset-bottom)) !important;
-                  bottom: calc(68px + env(safe-area-inset-bottom)) !important;
+                  /* 56px (Sticky Bar) + 12px (Float Gap) = 68px */
+                  bottom: 68px !important;
                   right: 8px !important;
                   left: auto !important;
                 }
@@ -5028,7 +5021,5 @@
   <!-- ElevenLabs Widget -->
   <elevenlabs-convai agent-id="agent_2801kk75xvdnf1sbf1ph2pfydjwv"></elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
-
 </body>
-
 </html>
